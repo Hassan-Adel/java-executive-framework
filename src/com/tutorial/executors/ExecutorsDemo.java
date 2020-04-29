@@ -68,4 +68,16 @@ public class ExecutorsDemo {
             e.printStackTrace();
         }
     }
+
+    public static void asychronousAPI() {
+        var service = new MailService();
+        service.sendAsync();
+        System.out.println("Hello World");
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

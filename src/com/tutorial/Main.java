@@ -9,6 +9,7 @@ public class Main {
 	// write your code here
         //ExecutorsDemo.show();
         //ExecutorsDemo.callables();
-        ExecutorsDemo.completableFuture();
+        //ExecutorsDemo.completableFuture();
+        ExecutorsDemo.asychronousAPI();
     }
 }
