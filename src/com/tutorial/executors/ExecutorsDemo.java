@@ -80,4 +80,27 @@ public class ExecutorsDemo {
             e.printStackTrace();
         }
     }
+
+    public static void runCodeOnCompletion() {
+        var future = CompletableFuture.supplyAsync(()-> 1);
+        future.thenRunAsync(()-> System.out.println("Done async ... Thread : " + Thread.currentThread().getName()));
+        future.thenRun(()-> System.out.println("Done ... Thread : " + Thread.currentThread().getName()));
+        //When you need to get the result of the completable future
+        // result equals 1: future
+        future.thenAccept((result)->{
+            System.out.println(Thread.currentThread().getName());
+            System.out.println(result);
+        });
+        future.thenAcceptAsync((result)->{
+            System.out.println(Thread.currentThread().getName());
+            System.out.println(result);
+        });
+
+        //pause main thread
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
