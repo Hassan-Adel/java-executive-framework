@@ -11,6 +11,7 @@ public class Main {
         //ExecutorsDemo.callables();
         //ExecutorsDemo.completableFuture();
         //ExecutorsDemo.asychronousAPI();
-        ExecutorsDemo.runCodeOnCompletion();
+        //ExecutorsDemo.runCodeOnCompletion();
+        ExecutorsDemo.HandleExeption();
     }
 }

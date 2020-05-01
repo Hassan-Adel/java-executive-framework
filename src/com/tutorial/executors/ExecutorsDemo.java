@@ -103,4 +103,24 @@ public class ExecutorsDemo {
             e.printStackTrace();
         }
     }
+
+    public static void HandleExeption() {
+        var future = CompletableFuture.supplyAsync(()-> {
+            System.out.println("Getting data..");
+            throw new IllegalArgumentException();
+        });
+
+        try {
+            //note that this returns a NEW completable future
+            //exceptionally: maps a Throwable object to another type
+            var dataOrDefault = future.exceptionally(ex -> 1).get();
+            System.out.println(dataOrDefault);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            //get the actual cause
+            e.getCause();
+            e.printStackTrace();
+        }
+    }
 }
