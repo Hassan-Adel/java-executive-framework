@@ -1,5 +1,6 @@
 package com.tutorial.executors;
 
+import java.sql.SQLOutput;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
@@ -69,7 +70,7 @@ public class ExecutorsDemo {
         }
     }
 
-    public static void asychronousAPI() {
+    public static void asynchronousAPI() {
         var service = new MailService();
         service.sendAsync();
         System.out.println("Hello World");
@@ -122,5 +123,27 @@ public class ExecutorsDemo {
             e.getCause();
             e.printStackTrace();
         }
+    }
+
+    public static int toFahrenheit(int celsius){
+        return (int) (celsius * 1.8) + 32;
+    }
+
+    public static void transformingCompletableFuture() {
+        //get temp in celsius
+        var future = CompletableFuture.supplyAsync(() -> 20);
+        //convert it to fahrenheit after getting
+       future
+           .thenApply(ExecutorsDemo::toFahrenheit)
+           .thenAccept(f -> System.out.println(f));
+//        try {
+//            //var result = future.thenApply(celsius -> toFahrenheit(celsius)).get();
+//            var result = future.thenApply(ExecutorsDemo::toFahrenheit).get();
+//            System.out.println(result);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        }
     }
 }

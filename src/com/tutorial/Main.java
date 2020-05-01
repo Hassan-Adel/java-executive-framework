@@ -10,8 +10,9 @@ public class Main {
         //ExecutorsDemo.show();
         //ExecutorsDemo.callables();
         //ExecutorsDemo.completableFuture();
-        //ExecutorsDemo.asychronousAPI();
+        //ExecutorsDemo.asynchronousAPI();
         //ExecutorsDemo.runCodeOnCompletion();
-        ExecutorsDemo.HandleExeption();
+        //ExecutorsDemo.HandleExeption();
+        ExecutorsDemo.transformingCompletableFuture();
     }
 }
