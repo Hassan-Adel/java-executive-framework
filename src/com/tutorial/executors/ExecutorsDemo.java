@@ -1,10 +1,7 @@
 package com.tutorial.executors;
 
 import java.sql.SQLOutput;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.*;
 
 public class ExecutorsDemo {
 
@@ -145,5 +142,20 @@ public class ExecutorsDemo {
 //        } catch (ExecutionException e) {
 //            e.printStackTrace();
 //        }
+    }
+
+    public static CompletableFuture<String> getUserEmailAsync(){
+        return CompletableFuture.supplyAsync(()-> "get user email");
+    }
+    public static CompletableFuture<String> getUserPlaylistAsync(String email){
+        return CompletableFuture.supplyAsync(() -> "user's playlist");
+    }
+    public static void composingCompletableFuture() {
+        //id -> email
+        getUserEmailAsync()
+        //email -> playlist
+        //.thenCompose(ExecutorsDemo::getUserPlaylistAsync)
+        .thenCompose( e -> getUserPlaylistAsync(e))
+                .thenAccept(playlist -> System.out.println(playlist));
     }
 }

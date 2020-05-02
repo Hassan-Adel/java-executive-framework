@@ -13,6 +13,7 @@ public class Main {
         //ExecutorsDemo.asynchronousAPI();
         //ExecutorsDemo.runCodeOnCompletion();
         //ExecutorsDemo.HandleExeption();
-        ExecutorsDemo.transformingCompletableFuture();
+        //ExecutorsDemo.transformingCompletableFuture();
+        ExecutorsDemo.composingCompletableFuture();
     }
 }
