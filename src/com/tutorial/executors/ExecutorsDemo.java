@@ -158,4 +158,18 @@ public class ExecutorsDemo {
         .thenCompose( e -> getUserPlaylistAsync(e))
                 .thenAccept(playlist -> System.out.println(playlist));
     }
+
+    public static void combineCompletableFutures() {
+        //returns price
+        var first = CompletableFuture.supplyAsync(() -> "20USD")
+                .thenApply(str -> {
+                    var price = str.replace("USD", "");
+                    return Integer.parseInt(price);
+                });
+        //returns exchange rate
+        var second = CompletableFuture.supplyAsync(() -> 0.9);
+        //start both tasks at the same time and wait for the result
+        first.thenCombine(second, (price, exchangeRate) -> price * exchangeRate)
+                .thenAccept(res -> System.out.println(res));
+    }
 }
