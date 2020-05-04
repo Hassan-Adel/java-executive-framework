@@ -15,6 +15,7 @@ public class Main {
         //ExecutorsDemo.HandleExeption();
         //ExecutorsDemo.transformingCompletableFuture();
         //ExecutorsDemo.composingCompletableFuture();
-        ExecutorsDemo.combineCompletableFutures();
+        //ExecutorsDemo.combineCompletableFutures();
+        ExecutorsDemo.waitForManyTasks();
     }
 }

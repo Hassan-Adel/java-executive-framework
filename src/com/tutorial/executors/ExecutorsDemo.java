@@ -172,4 +172,24 @@ public class ExecutorsDemo {
         first.thenCombine(second, (price, exchangeRate) -> price * exchangeRate)
                 .thenAccept(res -> System.out.println(res));
     }
+
+    public static void waitForManyTasks() {
+        var first = CompletableFuture.supplyAsync(()-> 1);
+        var second = CompletableFuture.supplyAsync(()-> 2);
+        var third = CompletableFuture.supplyAsync(()-> 3);
+
+        var all = CompletableFuture.allOf(first, second, third);
+        all.thenRun(()->{
+            //get the result of each future
+            try {
+                var r1 = first.get();
+                System.out.println("First task result : " + r1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+            System.out.println("All tasks completed successfully");
+        });
+    }
 }
