@@ -192,4 +192,19 @@ public class ExecutorsDemo {
             System.out.println("All tasks completed successfully");
         });
     }
+
+    public static void waitForTheFirstTask() {
+        var first = CompletableFuture.supplyAsync(() ->{
+            LongTask.simulate();
+            return 20;
+        });
+
+        //represent the fast server
+        var second = CompletableFuture.supplyAsync(() -> 20);
+
+        //wait for the faster return
+        var fastest = CompletableFuture.anyOf(first, second);
+
+        fastest.thenAccept(temp -> System.out.println(temp));
+    }
 }
