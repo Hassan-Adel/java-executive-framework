@@ -207,4 +207,20 @@ public class ExecutorsDemo {
 
         fastest.thenAccept(temp -> System.out.println(temp));
     }
+
+    public static void handlingTimeouts() {
+        var future = CompletableFuture.supplyAsync(()->{
+            LongTask.simulate();
+            return 3;
+        });
+        //default value, int time, time unit
+        try {
+            var result = future.completeOnTimeout(1, 1, TimeUnit.SECONDS).get();
+            System.out.println(result);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
 }

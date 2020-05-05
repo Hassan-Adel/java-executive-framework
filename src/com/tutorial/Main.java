@@ -17,6 +17,7 @@ public class Main {
         //ExecutorsDemo.composingCompletableFuture();
         //ExecutorsDemo.combineCompletableFutures();
         //ExecutorsDemo.waitForManyTasks();
-        ExecutorsDemo.waitForTheFirstTask();
+        //ExecutorsDemo.waitForTheFirstTask();
+        ExecutorsDemo.handlingTimeouts();
     }
 }
